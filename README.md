@@ -94,3 +94,8 @@ classDiagram
     Event "1" -- "1" Calendar : added_to
     SearchFilter "1" -- "1" Event : filters
 ```
+
+#Assignment - 9
+
+Description:
+Each team member has developer their own REST APIs according to their milestones through Node.js, Mongo Atlas and MongoDB Compass. Each explored their own API requirements, and common efficient file structure to organize microservices in backend (i.e. Controllers, Services, Models, Routes, Utils).

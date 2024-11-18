@@ -3,7 +3,7 @@ import cors from "cors";
 import express from "express";
 
 import initializeRoutes from "./routes/index.js"; 
-
+//initialize the app
 const initialize = (app) => {
     app.use(cors());
     app.use(express.json());
