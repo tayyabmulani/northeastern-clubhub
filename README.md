@@ -1,14 +1,15 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/DIHvCS29)
-
 # Northeastern Club Hub
 
 ## Project Overview
+
 The **Northeastern Club Hub** is a centralized platform designed for Northeastern University, where all clubs can share events, announcements, and updates. This platform allows students to view all upcoming events in a single portal and receive automatic notifications for new events or announcements, making it easier to stay informed about campus activities.
 
 ## Problem Statement
+
 With a large number of clubs at Northeastern, students often miss out on valuable events because information is scattered across various platforms. Following each club on different social media channels is cumbersome and impractical. The Northeastern Club Hub solves this problem by providing a unified platform where all club activities are posted, and students receive automatic notifications for new events.
 
 ## Key Features
+
 - **Event Feed**: A unified feed displaying events from all clubs in chronological order.
 - **Event Calendar**: An interactive calendar view where students can see all upcoming events by date.
 - **Automatic Notifications**: Notifications are sent to all students for new events or announcements from any club, ensuring they stay updated.
@@ -17,6 +18,7 @@ With a large number of clubs at Northeastern, students often miss out on valuabl
 - **Club Admin Dashboard**: A dedicated dashboard for club representatives to post and manage events, view RSVPs, and track engagement.
 
 ## Technology Stack
+
 - **Frontend**: React
 - **Backend**: Node.js with Express
 - **Database**: MongoDB
@@ -24,10 +26,11 @@ With a large number of clubs at Northeastern, students often miss out on valuabl
 - **Authentication**: JWT-based authentication for secure login and role-based access
 
 ## Team Members
-- Tharun Maheswararao - maheswararao.t@northeastern.edu
-- Tayyab Mulani - mulani.ta@northeastern.edu
-- Shriram Azhagarasam - azhagarasan.s@northeastern.edu
-- Bharath Kumar Tamilselvam - tamilselvam.b@northeastern.edu
+
+- Tharun Maheswararao - <maheswararao.t@northeastern.edu>
+- Tayyab Mulani - <mulani.ta@northeastern.edu>
+- Shriram Azhagarasam - <azhagarasan.s@northeastern.edu>
+- Bharath Kumar Tamilselvam - <tamilselvam.b@northeastern.edu>
 
 ## Object-Oriented Design (Domain-Driven Design)
 

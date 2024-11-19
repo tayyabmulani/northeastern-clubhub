@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
-
+//creating a schema for bookinge event
+//represents booking made by a user
 const eventSchema = new mongoose.Schema({
     name: { 
         type: String, 
@@ -22,7 +23,7 @@ const eventSchema = new mongoose.Schema({
         ref: 'User', 
         required: true 
     },
-}, { timestamps: true });
+}, { timestamps: true });//automatically includes createdAt and updatedAt fields
 
 const EventModel = mongoose.model('event', eventSchema);
 export default EventModel;
