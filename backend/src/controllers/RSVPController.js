@@ -1,24 +1,18 @@
-const eventService = require('../services/RSVPService.js');
+import * as rsvpService from "../services/RSVPService.js";
 
-const rsvpToEvent = async (req, res) => {
+// Controller to create a new RSVP event
+export const createEvent = async (req, res) => {
     try {
-        const { eventId } = req.params;
-        const { studentId } = req.body;
-        const response = await eventService.rsvpToEvent(eventId, studentId);
-        res.status(201).json(response);
+        // Get event data from the request body
+        const eventData = req.body;
+
+        // Call the service to create the event
+        const newEvent = await rsvpService.createEvent(eventData);
+
+        // Respond with the created event
+        res.status(201).json(newEvent);
     } catch (err) {
-        res.status(err.message === 'Event not found' ? 404 : 500).json({ error: err.message });
+        // Handle errors
+        res.status(500).json({ error: err.message });
     }
 };
-
-const getEventReminders = async (req, res) => {
-    try {
-        const { eventId } = req.params;
-        const reminders = await eventService.getEventReminders(eventId);
-        res.status(200).json(reminders);
-    } catch (err) {
-        res.status(err.message === 'Event not found' ? 404 : 500).json({ error: err.message });
-    }
-};
-
-module.exports = { rsvpToEvent, getEventReminders };

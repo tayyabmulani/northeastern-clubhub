@@ -12,7 +12,7 @@ const reminderSchema = new mongoose.Schema({
     },
 }, { _id: false }); // Prevents MongoDB from creating a separate ID for each reminder
 
-const eventSchema = new mongoose.Schema({
+const rsvpEventSchema = new mongoose.Schema({
     name: { 
         type: String, 
         required: true 
@@ -42,6 +42,5 @@ const eventSchema = new mongoose.Schema({
 }, { timestamps: true }); // Automatically includes createdAt and updatedAt fields
 
 // Creating a model for the schema
-const EventModel = mongoose.model('Event', eventSchema);
-
-export default EventModel;
+export const RSVPEventModel = mongoose.model('Rsvp', rsvpEventSchema);
+export const RSVPRemainderModel = mongoose.model('Remainders', reminderSchema);

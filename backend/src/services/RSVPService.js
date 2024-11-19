@@ -1,21 +1,11 @@
-const Event = require('../models/RSVP.js');
+import {RSVPEventModel} from "../models/RSVP.js";
 
-const rsvpToEvent = async (eventId, studentId) => {
-    const event = await Event.findById(eventId);
-    if (!event) throw new Error('Event not found');
+export const createEvent = async (eventData) => {
+    // Create a new instance of the event model
+    const newEvent = new RSVPEventModel(eventData);
     
-    if (!event.attendees.includes(studentId)) {
-        event.attendees.push(studentId);
-        await event.save();
-    }
-    return { message: "RSVP successful for event." };
-};
+    // Save the event to the database
+    await newEvent.save();
 
-const getEventReminders = async (eventId) => {
-    const event = await Event.findById(eventId);
-    if (!event) throw new Error('Event not found');
-    
-    return { eventId: event._id, reminders: event.reminders };
+    return newEvent; // Return the created event
 };
-
-module.exports = { rsvpToEvent, getEventReminders };
