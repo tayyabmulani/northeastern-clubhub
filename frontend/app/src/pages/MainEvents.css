@@ -1,0 +1,43 @@
+/* Main container */
+.main-events-container {
+    position: relative;
+    height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+    transition: filter 0.3s ease;
+}
+
+/* Blur effect applied only when form is visible */
+.blurred {
+    filter: blur(5px);
+}
+
+/* Prevent body scrolling when modal is visible */
+body.modal-open {
+    overflow: hidden;
+}
+
+/* Create button */
+.create-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    outline: none; /* Remove the focus outline */
+}
+
+.create-button:hover {
+    background-color: #0056b3;
+}
+
+/* Optional: Add a custom focus style for better accessibility */
+.create-button:focus {
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Custom focus effect */
+}

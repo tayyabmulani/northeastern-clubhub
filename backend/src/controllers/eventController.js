@@ -1,15 +1,27 @@
 import * as eventService from '../services/eventService.js';
 import { setSuccess, setError } from '../utils/response-handler.js';
-//Handles the creation of a new event
+import multer from 'multer';
+
+// Configure Multer to store the image in memory
+const storage = multer.memoryStorage();
+export const upload = multer({ storage });
+
+// Handles the creation of a new event
 export const post = async (req, res) => {
     try {
-        //extracts the booking data from the request body
-        const newEvent = {...req.body};
-        const event = await eventService.createEvent(newEvent);
-        setSuccess(event, res);
+      console.log("Request Body:", req.body);
+      console.log("Uploaded File:", req.file); // This should log the uploaded image
+  
+      const newEvent = {
+        ...req.body,
+        createdBy: "64a7e9e4e9b8f3f2a1e5c4b8",
+        event_image: req.file ? req.file.buffer : null, // Save the image buffer
+      };
+  
+      const event = await eventService.createEvent(newEvent);
+      setSuccess(event, res);
     } catch (err) {
-        //displays error creating event
-        console.error('Error creating event:', err);
-        setError(err, res);
+      console.error("Error creating event:", err);
+      setError(err, res);
     }
-}
+};
