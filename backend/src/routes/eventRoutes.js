@@ -7,4 +7,7 @@ const router = express.Router();
 router.route("/")
     .post(eventController.upload.single("image"), eventController.post);
 
+router.route("/:id")
+    .get(eventController.getEventById);
+
 export default router;
