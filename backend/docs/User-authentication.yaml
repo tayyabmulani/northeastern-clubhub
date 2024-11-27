@@ -4,7 +4,7 @@ info:
   description: API endpoints for managing user authentication, roles, and account verification.
   version: 1.0.0
 servers:
-  - url: http://localhost:9000
+  - url: http://localhost:3002
     description: Local development environment
 paths:
   /api/users/register:
