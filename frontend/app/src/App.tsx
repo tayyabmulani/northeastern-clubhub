@@ -4,6 +4,10 @@ import LoginPage from './pages/LoginPage';
 import StudentSignup from './pages/StudentSignup';
 import ClubAdminSignup from './pages/ClubAdminSignup';
 import PlatformAdminSignup from './pages/PlatformAdminSignup';
+<<<<<<< Updated upstream
+=======
+import StudentHome from './pages/StudentHome';
+>>>>>>> Stashed changes
 
 const App: React.FC = () => {
   return (
@@ -13,6 +17,10 @@ const App: React.FC = () => {
         <Route path="/Student" element={<StudentSignup />} />
         <Route path="/ClubAdmin" element={<ClubAdminSignup />} />
         <Route path="/PlatformAdmin" element={<PlatformAdminSignup />} />
+<<<<<<< Updated upstream
+=======
+        <Route path="/student-home" element={<StudentHome />} />
+>>>>>>> Stashed changes
         {/* Add other routes here */}
       </Routes>
     </Router>

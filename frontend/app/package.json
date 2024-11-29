@@ -14,6 +14,10 @@
     "@emotion/styled": "^11.13.5",
     "@mui/material": "^6.1.8",
     "axios": "^1.7.8",
+<<<<<<< Updated upstream
+=======
+    "mongoose": "^8.8.3",
+>>>>>>> Stashed changes
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^7.0.1"

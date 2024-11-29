@@ -1,4 +1,9 @@
 import React, { useState } from 'react';
+<<<<<<< Updated upstream
+=======
+import { createUser } from '../services/authService';
+import { useNavigate } from 'react-router-dom';
+>>>>>>> Stashed changes
 import { Box, Button, Typography, Container, Grid } from '@mui/material';
 import InputField from '../components/InputField';
 
@@ -11,6 +16,12 @@ const StudentSignup: React.FC = () => {
     confirmPassword: '',
   });
 
+<<<<<<< Updated upstream
+=======
+  const [error, setError] = useState<string | null>(null);
+  const navigate = useNavigate();
+
+>>>>>>> Stashed changes
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData({
@@ -19,6 +30,7 @@ const StudentSignup: React.FC = () => {
     });
   };
 
+<<<<<<< Updated upstream
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log('Form Submitted:', formData);
@@ -26,6 +38,38 @@ const StudentSignup: React.FC = () => {
   };
 
   return (
+=======
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault(); // Prevent the default form submission
+
+    if (formData.password !== formData.confirmPassword) {
+        setError('Passwords do not match');
+        return;
+    }
+
+    try {
+        const response = await createUser({
+            name: `${formData.firstName} ${formData.lastName}`,
+            email: formData.email,
+            password: formData.password,
+            role: "student",
+        });
+
+        // Accessing the 'success' field from the server response
+        if (response.data.success) {
+            navigate('/student-home'); // Redirect to StudentHome after successful signup
+        } else {
+            setError(response.data.message || 'An error occurred. Please try again.');
+        }
+    } catch (err) {
+        setError('An error occurred. Please try again.');
+        console.error('Error during signup:', err);
+    }
+};
+
+  return (
+    
+>>>>>>> Stashed changes
     <Container
       sx={{
         display: 'flex',
@@ -52,6 +96,16 @@ const StudentSignup: React.FC = () => {
         <Typography variant="body2" textAlign="center" gutterBottom>
           Already have an account? <a href="/login">Log in</a>
         </Typography>
+<<<<<<< Updated upstream
+=======
+        {/* Display error message if it exists */}
+        {error && (
+          <Typography color="error" textAlign="center" gutterBottom>
+            {error}
+          </Typography>
+        )}
+        
+>>>>>>> Stashed changes
         <form onSubmit={handleSubmit}>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
