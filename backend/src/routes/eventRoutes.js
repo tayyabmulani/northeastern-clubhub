@@ -10,4 +10,11 @@ router.route("/")
 router.route("/:id")
     .get(eventController.getEventById);
 
+router.route("/user/:userId")
+    .get(eventController.getEventsByUserId); // Get events by user ID
+    
+router.route("/:id")
+    .put(eventController.upload.single("event_image"), eventController.updateEvent)
+    .delete(eventController.deleteEvent); // Edit and delete by ID
+
 export default router;

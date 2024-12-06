@@ -4,6 +4,8 @@ import MainEvents from "./pages/MainEvents";
 import EventForm from "./components/EventForm";
 import EventDetails from "./components/EventDetails"; // Import EventDetails page
 import { EventData } from "./models/Types";
+import GetEvents from "./components/GetEvents";
+import EditEvents from "./components/EditEvents";
 
 const App: React.FC = () => {
   const handleEventSubmit = (eventData: EventData) => {
@@ -28,8 +30,14 @@ const App: React.FC = () => {
           element={<EventForm onSubmit={handleEventSubmit} onClose={handleFormClose} />}
         />
 
-        {/* Route for displaying event details */}
+        {/* Route for displaying specific event details */}
         <Route path="/events/:eventId" element={<EventDetails />} />
+
+        {/* Route for displaying my event details */}
+        <Route path="/my-events" element={<GetEvents />} />
+
+        {/* Route to edit my event details */}
+        <Route path="/edit-my-event/:eventId" element={<EditEvents />} />
       </Routes>
     </Router>
   );

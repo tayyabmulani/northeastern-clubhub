@@ -37,10 +37,6 @@ const eventSchema = new mongoose.Schema(
             type: Buffer, // Store image as binary data
             required: false,
         },
-        organization: {
-            type: String, // Organization name as a string
-            required: false, // Make it optional initially
-        },
     },
     { timestamps: true }
 ); //automatically includes createdAt and updatedAt fields

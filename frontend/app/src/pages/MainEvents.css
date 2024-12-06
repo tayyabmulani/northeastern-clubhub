@@ -41,3 +41,14 @@ body.modal-open {
 .create-button:focus {
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Custom focus effect */
 }
+
+.main-events-container .alert-container {
+    position: fixed;
+    top: 20px; /* Adjust this value to move the alert up or down */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    width: 300px; /* Set the width to reduce it */
+    max-width: 80%; /* Ensure it adapts for smaller screens */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Optional: Add a shadow for better visibility */
+}
