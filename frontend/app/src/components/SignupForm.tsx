@@ -1,5 +1,14 @@
 import React, { useState } from "react";
-import { Box, Typography, TextField, Button, Link } from "@mui/material";
+import {
+  Box,
+  Typography,
+  TextField,
+  Button,
+  Link,
+  InputAdornment,
+  IconButton,
+} from "@mui/material";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
 
 interface SignupFormProps {
   onSubmit: (data: {
@@ -8,7 +17,7 @@ interface SignupFormProps {
     password: string;
     confirmPassword: string;
   }) => void;
-  redirectLink?: string; // Link to redirect if the user already has an account
+  redirectLink?: string;
 }
 
 const SignupForm: React.FC<SignupFormProps> = ({ onSubmit, redirectLink }) => {
@@ -18,6 +27,8 @@ const SignupForm: React.FC<SignupFormProps> = ({ onSubmit, redirectLink }) => {
     password: "",
     confirmPassword: "",
   });
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [error, setError] = useState("");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -32,6 +43,14 @@ const SignupForm: React.FC<SignupFormProps> = ({ onSubmit, redirectLink }) => {
     }
     setError("");
     onSubmit(formData);
+  };
+
+  const togglePasswordVisibility = () => {
+    setShowPassword((prev) => !prev);
+  };
+
+  const toggleConfirmPasswordVisibility = () => {
+    setShowConfirmPassword((prev) => !prev);
   };
 
   return (
@@ -77,22 +96,40 @@ const SignupForm: React.FC<SignupFormProps> = ({ onSubmit, redirectLink }) => {
         <TextField
           label="Password"
           name="password"
-          type="password"
+          type={showPassword ? "text" : "password"}
           value={formData.password}
           onChange={handleChange}
           fullWidth
           margin="normal"
           required
+          InputProps={{
+            endAdornment: (
+              <InputAdornment position="end">
+                <IconButton onClick={togglePasswordVisibility} edge="end">
+                  {showPassword ? <VisibilityOff /> : <Visibility />}
+                </IconButton>
+              </InputAdornment>
+            ),
+          }}
         />
         <TextField
           label="Confirm Password"
           name="confirmPassword"
-          type="password"
+          type={showConfirmPassword ? "text" : "password"}
           value={formData.confirmPassword}
           onChange={handleChange}
           fullWidth
           margin="normal"
           required
+          InputProps={{
+            endAdornment: (
+              <InputAdornment position="end">
+                <IconButton onClick={toggleConfirmPasswordVisibility} edge="end">
+                  {showConfirmPassword ? <VisibilityOff /> : <Visibility />}
+                </IconButton>
+              </InputAdornment>
+            ),
+          }}
         />
         <Button
           type="submit"

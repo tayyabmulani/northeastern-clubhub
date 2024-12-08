@@ -1,13 +1,25 @@
 import React, { useState } from "react";
-import { Box, Typography, TextField, Button, Link } from "@mui/material";
+import {
+  Box,
+  Typography,
+  TextField,
+  Button,
+  Link,
+  InputAdornment,
+  IconButton,
+} from "@mui/material";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
+import { useTranslation } from "react-i18next";
 
 interface LoginFormProps {
   onSubmit: (data: { email: string; password: string }) => void;
-  redirectLink?: string; // Link to redirect if the user doesn't have an account
+  redirectLink?: string;
 }
 
 const LoginForm: React.FC<LoginFormProps> = ({ onSubmit, redirectLink }) => {
+  const { t } = useTranslation(); // Use the `useTranslation` hook
   const [formData, setFormData] = useState({ email: "", password: "" });
+  const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -17,11 +29,15 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSubmit, redirectLink }) => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.email || !formData.password) {
-      setError("Both email and password are required.");
+      setError(t("errorMessage.requiredFields"));
       return;
     }
     setError("");
     onSubmit(formData);
+  };
+
+  const togglePasswordVisibility = () => {
+    setShowPassword((prev) => !prev);
   };
 
   return (
@@ -36,7 +52,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSubmit, redirectLink }) => {
       }}
     >
       <Typography variant="h5" textAlign="center" gutterBottom>
-        Log in
+        {t("loginTitle")}
       </Typography>
       {error && (
         <Typography color="error" textAlign="center" gutterBottom>
@@ -45,7 +61,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSubmit, redirectLink }) => {
       )}
       <form onSubmit={handleSubmit}>
         <TextField
-          label="Email address"
+          label={t("emailLabel")}
           name="email"
           type="email"
           value={formData.email}
@@ -55,14 +71,23 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSubmit, redirectLink }) => {
           required
         />
         <TextField
-          label="Password"
+          label={t("passwordLabel")}
           name="password"
-          type="password"
+          type={showPassword ? "text" : "password"}
           value={formData.password}
           onChange={handleChange}
           fullWidth
           margin="normal"
           required
+          InputProps={{
+            endAdornment: (
+              <InputAdornment position="end">
+                <IconButton onClick={togglePasswordVisibility} edge="end">
+                  {showPassword ? <VisibilityOff /> : <Visibility />}
+                </IconButton>
+              </InputAdornment>
+            ),
+          }}
         />
         <Button
           type="submit"
@@ -75,13 +100,13 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSubmit, redirectLink }) => {
             marginTop: 2,
           }}
         >
-          Log In
+          {t("loginButton")}
         </Button>
       </form>
       <Typography textAlign="center" mt={2}>
-        Don't have an account?{" "}
+        {t("noAccount")}{" "}
         <Link href={redirectLink || "/signup"} underline="hover">
-          Sign up
+          {t("signUpLink")}
         </Link>
       </Typography>
     </Box>

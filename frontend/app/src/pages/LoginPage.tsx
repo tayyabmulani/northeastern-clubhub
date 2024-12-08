@@ -10,17 +10,17 @@ const LoginPage: React.FC = () => {
 
   const handleStudentLogin = () => {
     console.log('Student Login');
-    navigate('/student');
+    navigate('/student-login');
   };
 
   const handleClubAdminLogin = () => {
     // Redirect to ClubAdmin Login
-    navigate('/ClubAdmin');
+    navigate('/club-admin-login');
   };
 
   const handlePlatformAdminLogin = () => {
     // Redirect to PlatformAdmin Login
-    navigate('/PlatformAdmin');
+    navigate('/platform-admin-login');
   };
 
   return (
@@ -35,10 +35,10 @@ const LoginPage: React.FC = () => {
       }}
       >
       <Typography variant="h4" textAlign="center" gutterBottom>
-        Welcome to Northeastern Club Hub
+        Northeastern Club Hub
       </Typography>
       <br /><br />
-      <Grid container spacing={4} justifyContent="center" sx={{ maxHeight: '80%', maxWidth: '80%' }}>
+      <Grid container spacing={4} justifyContent="center" alignItems="center">
         <Grid item xs={12} sm={6} md={4}>
           <CardComponent
             image={studentImg}

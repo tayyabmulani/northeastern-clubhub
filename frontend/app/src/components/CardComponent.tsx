@@ -16,7 +16,13 @@ const CardComponent: React.FC<CardComponentProps> = ({ image, title, description
         component="img"
         image={image}
         alt={title}
-        sx={{ borderRadius: '50%', width: '70%', margin: '0 auto' }}
+        sx={{
+          width: "250px", // Ensure width is fixed
+          height: "250px", // Ensure height matches width
+          borderRadius: "50%", // Make it circular
+          margin: "16px auto", // Center the image
+          objectFit: "cover", // Ensure the image fits well
+        }}
       />
       <CardContent>
         <Typography variant="h5" gutterBottom>

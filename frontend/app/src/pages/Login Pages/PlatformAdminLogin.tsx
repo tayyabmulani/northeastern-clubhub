@@ -10,7 +10,10 @@ const PlatformAdminLogin: React.FC = () => {
   const handleLogin = async (data: { email: string; password: string }) => {
     try {
       const { token } = await platformAdminService.login(data);
-      localStorage.setItem("token", token); // Store JWT token
+      console.log(token.token, token.id, token.role);
+      localStorage.setItem("token", token.token);
+      localStorage.setItem("user_id", token.id);
+      localStorage.setItem("user_role", token.role);
       navigate("/platform-admin-dashboard"); // Navigate to Platform Admin dashboard
     } catch (error: any) {
       alert(error.message || "Invalid email or password.");

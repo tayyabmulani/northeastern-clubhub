@@ -16,6 +16,7 @@ import EventDetails from "./components/EventDetails"; // Import EventDetails pag
 import { EventData } from "./models/Types";
 import GetEvents from "./components/GetEvents";
 import EditEvents from "./components/EditEvents";
+import './i18n';
 
 const App: React.FC = () => {
   const handleEventSubmit = (eventData: EventData) => {
@@ -31,11 +32,9 @@ const App: React.FC = () => {
     <Router>
       <Routes>
         <Route path="/" element={<LoginPage />} />
-        <Route path="/Student" element={<StudentSignup />} />
-        <Route path="/ClubAdmin" element={<ClubAdminSignup />} />
-        <Route path="/PlatformAdmin" element={<PlatformAdminSignup />} />
+        <Route path="/Student-signup" element={<StudentSignup />} />
         <Route path="/Student-home" element={<StudentHome />} />
-        <Route path="/login" element={<StudentLogin />} />
+        <Route path="/student-login" element={<StudentLogin />} />
         <Route path="/club-admin-login" element={<ClubAdminLogin />} />
         <Route path="/club-admin-signup" element={<ClubAdminSignup />} />
         <Route path="/club-admin-dashboard" element={<ClubAdminHome />} />

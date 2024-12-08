@@ -20,8 +20,13 @@ export const loginUserService = async (loginData) => {
 
     const isPasswordValid = await bcrypt.compare(loginData.password, user.passwordHash);
     if (!isPasswordValid) throw new Error("Invalid password");
-
-    return jwt.sign({ userId: user._id, role: user.role }, process.env.JWT_SECRET, { expiresIn: "1h" });
+    
+    const result = {
+        "id": user._id.toString(),
+        "token": jwt.sign({ userId: user._id, role: user.role }, process.env.JWT_SECRET, { expiresIn: "1h" }),
+        "role": user.role
+    }
+    return result;
 };
 
 export const getUserByIdService = async (userId) => {
