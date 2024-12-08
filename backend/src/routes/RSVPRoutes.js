@@ -7,4 +7,8 @@ const router = express.Router();
 router.route('/')
     .post(RSVPController.createEvent);
 
+// Route to get RSVP list for an event (Club Admin View)
+router.route("/requests")
+    .get(RSVPController.getEventRSVPs);
+
 export default router;
