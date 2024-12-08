@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_BASE_URL = 'http://localhost:5001/api/users'; // Replace with your backend API base URL
+const API_BASE_URL = 'http://localhost:3002/api/users'; // Replace with your backend API base URL
 
 /**
  * Creates a new user by sending a POST request to the backend.

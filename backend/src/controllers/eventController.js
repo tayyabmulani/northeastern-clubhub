@@ -18,7 +18,6 @@ export const post = async (req, res) => {
     
         const newEvent = {
             ...req.body,
-            createdBy: "64a7e9e4e9b8f3f2a1e5c4b8",
             event_image: req.file ? req.file.buffer : null, // Save the image buffer
         };
     

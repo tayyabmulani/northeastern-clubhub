@@ -11,6 +11,7 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import "./GetEvents.css"; // Add CSS for styling
+import Navbar from "./Navbar";
 
 interface EventData {
   _id: string;
@@ -24,7 +25,7 @@ interface EventData {
 }
 
 const GetEvent: React.FC = () => {
-  const userId = "64a7e9e4e9b8f3f2a1e5c4b8"; // Replace with dynamic user ID
+  const userId = localStorage.getItem("user_id"); // Replace with dynamic user ID
   const [events, setEvents] = useState<EventData[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [openDialog, setOpenDialog] = useState(false);
@@ -96,6 +97,8 @@ const GetEvent: React.FC = () => {
   }
 
   return (
+    <>
+    <Navbar />
     <div className="get-events-container">
       <h1>My Events</h1>
       <div className="event-cards">
@@ -154,6 +157,7 @@ const GetEvent: React.FC = () => {
         </DialogActions>
       </Dialog>
     </div>
+    </>
   );
 };
 

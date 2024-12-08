@@ -1,11 +1,19 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { EventData } from "../models/Types";
 import "./EventDetails.css"; // Add custom CSS for styling
 
 
 const EventDetails: React.FC = () => {
+
+    const getLastPartOfURL = () => {
+        const path = window.location.pathname;
+        const parts = path.split("/").filter(Boolean); // Split by "/" and remove empty parts
+        return parts[parts.length - 1]; // Return the last part
+      };
     // Static event ID for now (can be replaced with a dynamic route in the future)
-    const eventId = "674672c97bd2b14e9e193d60";
+    const eventId = getLastPartOfURL();
+    const navigate = useNavigate();
 
     // State to store event data and loading/error states
     const [event, setEvent] = useState<EventData | null>(null);
@@ -52,6 +60,16 @@ const EventDetails: React.FC = () => {
         return <p>No event details found.</p>;
     }
 
+    const handleNavigate = () => {
+        const eventData = {
+            event_name: event.name,
+            date: event.date.split('T')[0],
+            time: event.time,
+            location: event.location
+        }
+        navigate("/enroll", { state: eventData });
+    }
+
     return (
         <div className="event-details-container">
             {event.event_image && (
@@ -78,7 +96,7 @@ const EventDetails: React.FC = () => {
                 </div>
             </div>
             <div className="event-rsvp">
-                <button className="rsvp-button">RSVP to Event</button>
+                <button className="rsvp-button" onClick={handleNavigate}>RSVP to Event</button>
             </div>
         </div>
     );
