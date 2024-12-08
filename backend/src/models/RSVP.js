@@ -13,11 +13,7 @@ const reminderSchema = new mongoose.Schema({
 }, { _id: false }); // Prevents MongoDB from creating a separate ID for each reminder
 
 const rsvpEventSchema = new mongoose.Schema({
-    name: { 
-        type: String, 
-        required: true 
-    },
-    description: { 
+    event_name: { 
         type: String, 
         required: true 
     },
@@ -25,20 +21,22 @@ const rsvpEventSchema = new mongoose.Schema({
         type: Date, 
         required: true 
     },
+    time: {
+        type: String,
+        required: true,
+    },
     location: { 
         type: String, 
         required: true 
     },
-    createdBy: { 
-        type: mongoose.Schema.Types.ObjectId, 
-        ref: 'User', 
-        required: true 
+    name: {
+        type: String,
+        required: true,
     },
-    attendees: [{ 
-        type: mongoose.Schema.Types.ObjectId, 
-        ref: 'User' 
-    }], // List of users who RSVP'd
-    reminders: [reminderSchema], // Array of reminders for the event
+    email: { 
+      type: String, 
+      required: true,
+    }
 }, { timestamps: true }); // Automatically includes createdAt and updatedAt fields
 
 // Creating a model for the schema
