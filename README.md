@@ -22,15 +22,9 @@ With a large number of clubs at Northeastern, students often miss out on valuabl
 - **Frontend**: React
 - **Backend**: Node.js with Express
 - **Database**: MongoDB
-- **Real-Time Notifications**: Firebase Cloud Messaging (FCM) or WebSockets or Azure
+- **Real-Time Notifications**: Firebase Cloud Messaging (FCM)
 - **Authentication**: JWT-based authentication for secure login and role-based access
 
-## Team Members
-
-- Tharun Maheswararao - <maheswararao.t@northeastern.edu>
-- Tayyab Mulani - <mulani.ta@northeastern.edu>
-- Shriram Azhagarasam - <azhagarasan.s@northeastern.edu>
-- Bharath Kumar Tamilselvam - <tamilselvam.b@northeastern.edu>
 
 ## Object-Oriented Design (Domain-Driven Design)
 
